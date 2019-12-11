@@ -2,6 +2,7 @@ from tkinter import*
 import tkinter as tk
 from PIL import ImageTk
 from tkinter import messagebox
+import mysql.connector
 
 class login_system:
     def __init__(self,root):
@@ -41,14 +42,25 @@ class login_system:
 
 
     def login(self):
-        if self.username.get()=="" or self.password.get()=="":
+        mydb = mysql.connector.connect(
+            host="localhost",
+            user="",
+            passwd="",
+            database="bse"
+        )
+        mycursor = mydb.cursor()
+
+        name = self.username.get()
+        password = self.password.get()
+        sql = ("""SELECT * FROM customers WHERE name='%s' and address ='%s'""" % (name, password))
+        mycursor.execute(sql)
+        myresult = mycursor.fetchall()
+        if len(myresult) >= 1:
+            print("loggedin")
+            messagebox.showinfo("Message", "Logged in")
+        else:
             messagebox.showerror("Error","Enter Valid Data")
 
-        elif self.username.get() == "saood" and self.password.get() == "12345":
-            messagebox.showinfo("Message", "Logged in")
-
-        else:
-            messagebox.showerror("Error","Invalid")
 
 
 
