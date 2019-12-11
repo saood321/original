@@ -35,10 +35,14 @@ class login_system:
         txtpassword = Entry(login_frame, bd=5,textvariable=self.password, relief=GROOVE, font=("", 15)).grid(row=2, column=1, padx=20)
 
         btn_login= Button(login_frame,text="Login",width=20,command=self.login,font=("times new roman",18,"bold"),bg="black",fg="white").grid(row=3,columnspan=2,pady=10)
-        create_account = Button(login_frame, text="Create new account", width=20, command=self.login, font=("times new roman", 18, "bold"),bg="black", fg="white").grid(row=4, columnspan=2, pady=10)
+        create_account = Button(login_frame, text="Create new account", width=20, command=self.change, font=("times new roman", 18, "bold"),bg="black", fg="white").grid(row=4, columnspan=2, pady=10)
 
 
 
+    def change(self):
+        from homepage import gui
+        root.destroy()
+        gui()
 
     def login(self):
         mydb = mysql.connector.connect(
