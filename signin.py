@@ -34,7 +34,7 @@ def start(root):
     txtuser=Entry(login_frame,textvariable=username,bd=5,relief=GROOVE,font=("",15)).grid(row=1,column=1,padx=20)
 
     lbluser = Label(login_frame, text="Password", imag=root.password_icon, compound=LEFT,font=("times new roman", 30, "bold")).grid(row=2, column=0, padx=20, pady=10)
-    txtpassword = Entry(login_frame, bd=5,textvariable=password, relief=GROOVE, font=("", 15)).grid(row=2, column=1, padx=20)
+    txtpassword = Entry(login_frame, bd=5,show="*",textvariable=password, relief=GROOVE, font=("", 15)).grid(row=2, column=1, padx=20)
 
     btn_login= Button(login_frame,text="Login",width=20,command=lambda: login(root, username, password),font=("times new roman",18,"bold"),bg="black",fg="white").grid(row=3,columnspan=2,pady=10)
     create_account = Button(login_frame, text="Create new account", width=20, command=lambda: change(root), font=("times new roman", 18, "bold"),bg="black", fg="white").grid(row=4, columnspan=2, pady=10)

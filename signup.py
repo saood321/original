@@ -39,7 +39,7 @@ def start(root):
     txtemail = Entry(login_frame, bd=5, textvariable=email, relief=GROOVE, font=("", 15)).grid(row=2, column=1, padx=20)
 
     lbluser = Label(login_frame, text="Password", imag=root.password_icon, compound=LEFT,font=("times new roman", 30, "bold")).grid(row=3, column=0, padx=20, pady=10)
-    txtpassword = Entry(login_frame, bd=5,textvariable=password, relief=GROOVE, font=("", 15)).grid(row=3, column=1, padx=20)
+    txtpassword = Entry(login_frame,show="*", bd=5,textvariable=password, relief=GROOVE, font=("", 15)).grid(row=3, column=1, padx=20)
 
 
     btn_login= Button(login_frame,text="Signup",width=20,command=lambda: login(root, username, password,email),font=("times new roman",18,"bold"),bg="black",fg="white").grid(row=4,columnspan=2,pady=10)
@@ -64,19 +64,29 @@ def login(root, username, password,email):
     password = password.get()
     email=email.get()
 
-    sql = "INSERT INTO user (Username, Password,Email) VALUES (%s, %s,%s)"
-    val = (name, password,email)
-    mycursor.execute(sql, val)
-    mydb.commit()
-    var=mycursor.rowcount
-    if var>=1:
-
-        root.destroy()
-
-        homepage.homepage1()
-
-    else:
+    if password == "" or name == "" or email == "":
         messagebox.showerror("Error","Enter Valid Data")
+    else:
+        sql = ("""SELECT * FROM user WHERE Username='%s'""" % name)
+        mycursor.execute(sql)
+        myresult = mycursor.fetchall()
+
+        if len(myresult) >=1:
+            messagebox.showerror("Error","Username is already taken")
+        else:
+            sql = "INSERT INTO user (Username, Password,Email) VALUES (%s, %s,%s)"
+            val = (name, password,email)
+            mycursor.execute(sql, val)
+            mydb.commit()
+            var=mycursor.rowcount
+            if var>=1:
+
+                root.destroy()
+
+                homepage.homepage1()
+
+            else:
+                messagebox.showerror("Error","Enter Valid Data")
 
 
 
