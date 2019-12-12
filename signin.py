@@ -50,13 +50,13 @@ def login(root, username, password):
         host="localhost",
         user="",
         passwd="",
-        database="bse"
+        database="ebmp"
     )
     mycursor = mydb.cursor()
 
     name = username.get()
     password = password.get()
-    sql = ("""SELECT * FROM customers WHERE name='%s' and address ='%s'""" % (name, password))
+    sql = ("""SELECT * FROM user WHERE Username='%s' and Password ='%s'""" % (name, password))
     mycursor.execute(sql)
     myresult = mycursor.fetchall()
     if len(myresult) >= 1:
