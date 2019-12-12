@@ -8,7 +8,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def homepage1():
+def homepage1(name):
+
     win = tk.Tk()  # Create instance 
     win.title("Python GUI")
     win.geometry("1350x700+0+0")
@@ -16,11 +17,15 @@ def homepage1():
     win.camera = ImageTk.PhotoImage(file="camera.png")
     bg_lbl = Label(win, image=win.bg_icon).pack()
 
+
+    upgrade_frame = Frame(win, bg="white")
+    upgrade_frame.place(x=100, y=10)
+    btn_upgrade = Button(upgrade_frame,width=15,height=2,font=("times new roman", 20, "bold"), text="Upgrade Profile", command=camera, bg="black", fg="white").grid(row=0, column=0)
+
     login_frame = Frame(win, bg="white")
     login_frame.place(x=1100, y=10)
-
-    btn_login = Button(login_frame, text="camera", command=camera, image=win.camera, compound=LEFT, width=200,
-                       font=("times new roman", 20, "bold"), bg="black", fg="white").grid(row=1, column=1, pady=10)
+    btn_login = Button(login_frame, text="camera",width=200,height=70, command=camera, image=win.camera, compound=LEFT,
+                       font=("times new roman", 20, "bold"), bg="black", fg="white").grid(row=0, column=0)
 
     win.mainloop()
 
@@ -54,5 +59,3 @@ def camera():
     cap.release()
     cv2.destroyAllWindows()
 
-def gui():
-    print("Hello")

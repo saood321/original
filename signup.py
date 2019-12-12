@@ -79,11 +79,10 @@ def login(root, username, password,email):
             mycursor.execute(sql, val)
             mydb.commit()
             var=mycursor.rowcount
-            if var>=1:
+            if var >= 1:
 
                 root.destroy()
-
-                homepage.homepage1()
+                homepage.homepage1(name)
 
             else:
                 messagebox.showerror("Error","Enter Valid Data")

@@ -1,6 +1,5 @@
 import homepage
 import signup
-
 from tkinter import*
 import tkinter as tk
 from PIL import ImageTk
@@ -64,7 +63,7 @@ def login(root, username, password):
 
         root.destroy()
 
-        homepage.homepage1()
+        homepage.homepage1(name)
 
     else:
         messagebox.showerror("Error","Enter Valid Data")
