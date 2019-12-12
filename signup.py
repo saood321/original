@@ -1,6 +1,6 @@
 import homepage
 import signup
-
+from thinker import call
 from tkinter import*
 import tkinter as tk
 from PIL import ImageTk
@@ -23,7 +23,7 @@ def start(root):
 
     bg_lbl =Label(root,image=root.bg_icon).pack()
 
-    title=Label(root,text="Login",font=("times new roman",40,"bold"),bg="black",fg="white",bd=20,relief=GROOVE)
+    title=Label(root,text="Signup",font=("times new roman",40,"bold"),bg="black",fg="white",bd=20,relief=GROOVE)
     title.place(x=0,y=0,relwidth=1)
 
     login_frame=Frame(root,bg="white")
@@ -36,14 +36,14 @@ def start(root):
     lbluser = Label(login_frame, text="Password", imag=root.password_icon, compound=LEFT,font=("times new roman", 30, "bold")).grid(row=2, column=0, padx=20, pady=10)
     txtpassword = Entry(login_frame, bd=5,textvariable=password, relief=GROOVE, font=("", 15)).grid(row=2, column=1, padx=20)
 
-    btn_login= Button(login_frame,text="Login",width=20,command=lambda: login(root, username, password),font=("times new roman",18,"bold"),bg="black",fg="white").grid(row=3,columnspan=2,pady=10)
-    create_account = Button(login_frame, text="Create new account", width=20, command=lambda: change(root), font=("times new roman", 18, "bold"),bg="black", fg="white").grid(row=4, columnspan=2, pady=10)
+    btn_login= Button(login_frame,text="Signup",width=20,command=lambda: login(root, username, password),font=("times new roman",18,"bold"),bg="black",fg="white").grid(row=3,columnspan=2,pady=10)
+    create_account = Button(login_frame, text="Already have an account?", width=20, command=lambda: change(root), font=("times new roman", 18, "bold"),bg="black", fg="white").grid(row=4, columnspan=2, pady=10)
 
 
 
 def change(root):
     root.destroy()
-    signup.call()
+    thinker.call()
 
 def login(root, username, password):
     mydb = mysql.connector.connect(
@@ -75,5 +75,3 @@ def call():
     root=Tk()
     start(root)
     root.mainloop()
-
-call()

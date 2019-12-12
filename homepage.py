@@ -8,7 +8,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def homepage():
+def homepage1():
     win = tk.Tk()  # Create instance 
     win.title("Python GUI")
     win.geometry("1350x700+0+0")
@@ -21,6 +21,8 @@ def homepage():
 
     btn_login = Button(login_frame, text="camera", command=camera, image=win.camera, compound=LEFT, width=200,
                        font=("times new roman", 20, "bold"), bg="black", fg="white").grid(row=1, column=1, pady=10)
+
+    win.mainloop()
 
 def camera():
     face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
@@ -54,14 +56,3 @@ def camera():
 
 def gui():
     print("Hello")
-
-class home:
-    homepage()
-
-
-
-
-
-
-obj=home()
-tk.mainloop()
