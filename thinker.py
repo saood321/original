@@ -75,5 +75,3 @@ def call():
     root=Tk()
     start(root)
     root.mainloop()
-
-call()

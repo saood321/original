@@ -1,0 +1,3 @@
+import thinker
+
+thinker.call()

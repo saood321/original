@@ -1,6 +1,6 @@
 import homepage
 import signup
-from thinker import call
+import thinker
 from tkinter import*
 import tkinter as tk
 from PIL import ImageTk
