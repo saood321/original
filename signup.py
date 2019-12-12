@@ -1,8 +1,6 @@
 import homepage
-import signup
 import signin
 from tkinter import*
-import tkinter as tk
 from PIL import ImageTk
 from tkinter import messagebox
 import mysql.connector

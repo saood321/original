@@ -1,10 +1,8 @@
 from tkinter import*
 import tkinter as tk
 from PIL import ImageTk
-from tkinter import messagebox
-import mysql.connector
+import upgrade
 import cv2
-import numpy as np
 import matplotlib.pyplot as plt
 
 
@@ -20,7 +18,7 @@ def homepage1(name):
 
     upgrade_frame = Frame(win, bg="white")
     upgrade_frame.place(x=100, y=10)
-    btn_upgrade = Button(upgrade_frame,width=15,height=2,font=("times new roman", 20, "bold"), text="Upgrade Profile", command=camera, bg="black", fg="white").grid(row=0, column=0)
+    btn_upgrade = Button(upgrade_frame,width=15,height=2,font=("times new roman", 20, "bold"), text="Upgrade Profile", command=lambda :upgradedata(win,name), bg="black", fg="white").grid(row=0, column=0)
 
     login_frame = Frame(win, bg="white")
     login_frame.place(x=1100, y=10)
@@ -28,6 +26,13 @@ def homepage1(name):
                        font=("times new roman", 20, "bold"), bg="black", fg="white").grid(row=0, column=0)
 
     win.mainloop()
+
+def upgradedata(win,name):
+    win.destroy()
+    upgrade.callme(name)
+
+
+
 
 def camera():
     face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
